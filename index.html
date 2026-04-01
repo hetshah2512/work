@@ -74,7 +74,7 @@ nav.scrolled{padding:13px 48px}
 /* CHANGE 5 — pure black background on video section */
 #video-section{position:relative;width:100%;height:100vh;background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .video-container{position:absolute;inset:0}
-#bg-video{width:100%;height:100%;object-fit:cover;opacity:.75}
+#bg-video{width:100%;height:100%;object-fit:contain;background:#000;opacity:.75}
 .video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4) 0%,transparent 25%,transparent 65%,rgba(0,0,0,1) 100%);pointer-events:none;z-index:2}
 .video-top-bar{position:absolute;top:0;left:0;right:0;height:90px;background:linear-gradient(to bottom,rgba(0,0,0,1),transparent);pointer-events:none;z-index:3}
 .scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .4s}
@@ -261,8 +261,7 @@ section{padding:110px 48px}
 
 /* ── PORTRAIT MOBILE — showreel hidden, gaps tightened ── */
 @media(max-width:780px) and (orientation:portrait){
-  /* Change 2: hide video on portrait, show black only */
-  #bg-video{display:none}
+  
   /* Change 3: shrink showreel section & hero to remove large gap */
   #video-section{height:38vh;min-height:180px}
   #hero{min-height:auto;padding:72px 24px 52px}
