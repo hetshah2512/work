@@ -31,21 +31,7 @@ body{background:var(--bg);color:var(--fg);font-family:'DM Sans',sans-serif;font-
 .clap-body::after{content:'';position:absolute;bottom:14px;right:16px;width:6px;height:6px;border-radius:50%;background:var(--red);opacity:.5}
 .clap-flash{position:fixed;inset:0;background:#fff;opacity:0;z-index:10001;pointer-events:none;animation:clapFlash .15s 1s ease forwards}
 @keyframes clapFlash{0%{opacity:0}30%{opacity:.1}100%{opacity:0}}
-34 /* CHANGE 1 — loader name stays same, subtitle font size increased */
 
-/* 👇 PASTE HERE (line 35 onwards) */
-.brand-logo{
-  height:32px;
-  max-width:120px;
-  object-fit:contain;
-  opacity:.7;
-  filter:grayscale(100%);
-  transition:all .3s ease;
-}
-.brand-chip:hover .brand-logo{
-  opacity:1;
-  filter:grayscale(0%);
-}
 /* CHANGE 1 — loader name stays same, subtitle font size increased */
 .loader-name{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:-.02em;color:var(--fg);line-height:1;opacity:0;animation:loaderNameIn .7s 1.3s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes loaderNameIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
@@ -88,7 +74,7 @@ nav.scrolled{padding:13px 48px}
 /* CHANGE 5 — pure black background on video section */
 #video-section{position:relative;width:100%;height:100vh;background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .video-container{position:absolute;inset:0}
-#bg-video{width:100%;height:100%;object-fit:contain;background:#000;opacity:.75}
+#bg-video{width:100%;height:100%;object-fit:cover;opacity:.75}
 .video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4) 0%,transparent 25%,transparent 65%,rgba(0,0,0,1) 100%);pointer-events:none;z-index:2}
 .video-top-bar{position:absolute;top:0;left:0;right:0;height:90px;background:linear-gradient(to bottom,rgba(0,0,0,1),transparent);pointer-events:none;z-index:3}
 .scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .4s}
@@ -220,16 +206,7 @@ section{padding:110px 48px}
 .brands-track.r{animation-direction:reverse;animation-duration:48s}
 .brands-track.r2{animation-duration:55s}
 .brands-carousel-wrap:hover .brands-track{animation-play-state:paused}
-.brand-chip{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-width:140px;
-  height:60px;
-  padding:0 20px;
-  flex-shrink:0;
-  opacity:.7;
-  transition:opacity .3s;
+.brand-chip{display:inline-flex;align-items:center;padding:18px 28px;flex-shrink:0;opacity:.6;transition:opacity .3s;cursor:default}
 .brand-chip:hover{opacity:1}
 .brand-nm{font-family:'DM Serif Display',serif;font-size:clamp(.95rem,1.5vw,1.3rem);color:var(--muted);white-space:nowrap;transition:color .2s}
 .brand-chip:hover .brand-nm{color:var(--fg)}
@@ -284,7 +261,8 @@ section{padding:110px 48px}
 
 /* ── PORTRAIT MOBILE — showreel hidden, gaps tightened ── */
 @media(max-width:780px) and (orientation:portrait){
-  
+  /* Change 2: hide video on portrait, show black only */
+  #bg-video{display:none}
   /* Change 3: shrink showreel section & hero to remove large gap */
   #video-section{height:38vh;min-height:180px}
   #hero{min-height:auto;padding:72px 24px 52px}
@@ -349,7 +327,7 @@ section{padding:110px 48px}
   <div class="video-top-bar"></div>
   <div class="video-container">
     <video id="bg-video" autoplay muted loop playsinline>
-      <source src="showreel.mp4" type="video/mp4">
+      <source src="Lowest_qual_het_website_film.mp4" type="video/mp4">
     </video>
   </div>
   <div class="video-overlay"></div>
@@ -648,38 +626,6 @@ function closeFilmOnBg(e){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFilm();});
 
 /* CLIENTS — text names */
-  const brandLogos = {
-  "Discovery Channel": "discovery.png",
-  "Etude Beauty": "etude.png",
-  "KFC": "KFC.svg",
-  "Laneige": "laneige.png",
-  "MuscleBlaze": "muscleblaze.png",
-  "Innisfree": "innisfree.png",
-  "Coke Studio Bharat": "cokestudiobharat.png",
-  "Prime Video": "amazonprime.png",
-  "Drools": "drools.png",
-
-  "Blum": "blum.png",
-  "McDonalds": "mcdonald's.png",
-  "Fynd": "fynd.png",
-  "SCOTT": "scott.png",
-  "Reliance Jewels": "reliance jewels.png",
-  "ICICI Bank": "icici.png",
-  "Ultrahuman": "ultrahuman.png",
-  "Being Human": "beinghuman.png",
-  "Emma": "emma.png",
-
-  "Netflix": "netflix.png",
-  "Starbucks": "starbucks.png",
-  "M.A.C": "maccosmetics.png",
-  "Myntra": "myntra.png",
-  "Julahaa": "julahaa.png",
-  "ELLE": "elle.png",
-  "Bumble": "bumble.png",
-  "Outhouse": "outhouse.png",
-  "Kay Beauty": "kaybeauty.png"
-
-};
 const bRow1=['Discovery Channel','Etude Beauty','KFC','Laneige','MuscleBlaze','Innisfree','Coke Studio Bharat','Prime Video','Drools'];
 const bRow2=['Blum','McDonalds','Fynd','SCOTT','Reliance Jewels','ICICI Bank','Ultrahuman','Being Human','Emma'];
 const bRow3=['Netflix','Starbucks','M.A.C','Myntra','Julahaa','ELLE','Bumble','Outhouse','Kay Beauty'];
@@ -687,10 +633,7 @@ const bRow3=['Netflix','Starbucks','M.A.C','Myntra','Julahaa','ELLE','Bumble','O
   const track=document.getElementById(id);
   [...items,...items,...items,...items].forEach(name=>{
     const chip=document.createElement('div');chip.className='brand-chip';
-    const nm=document.createElement('img');
-nm.className='brand-logo';
-nm.src = `${brandLogos[name]}`;
-nm.alt = name;
+    const nm=document.createElement('span');nm.className='brand-nm';nm.textContent=name;
     const sep=document.createElement('span');sep.className='brand-sep';sep.textContent='·';
     chip.appendChild(nm);chip.appendChild(sep);
     track.appendChild(chip);
